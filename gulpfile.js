@@ -1,13 +1,8 @@
 var gulp = require('gulp');
 const $ = require('gulp-load-plugins')();
-// var jade = require('gulp-jade');
-// var sass = require('gulp-sass');
-// var plumber = require('gulp-plumber');
-// var postcss = require('gulp-postcss');
 var autoprefixer = require('autoprefixer');
 var browserSync = require('browser-sync').create();
 var minimist = require('minimist');
-// const { vendorJS } = require('./vendorJS');
 
 //minimist, if
 var envOptions = {
@@ -73,17 +68,7 @@ gulp.task('jade', function() {
       .pipe(gulp.dest('./public/javascripts'))
       .pipe(browserSync.stream());
     });
-    // //vendorJs
-    //   const vendorJs = function(done) {
-    //     gulp.src([
-    //       './node_modules/jquery/dist/jquery.slim.min.js',
-    //       './node_modules/bootstrap/dist/js/bootstrap.bundle.min.js'
-    //       ])
-    //       .pipe($.concat('vendor.js'))
-    //       .pipe(gulp.dest('./public/javascripts'))
-    //     done();
-    //   };
-    //   exports.vendorJs = vendorJs;
+    // vendorJs
     gulp.task('vendorJs', function() {
         return gulp.src([
           './node_modules/jquery/dist/jquery.slim.min.js',
@@ -123,5 +108,3 @@ gulp.task('deploy', function() {
   gulp.task('build', gulp.series('clean',gulp.parallel('jade', 'sass', 'babel'))); // gulp clean 清空  //'browser-sync', 'watch'不用加入
   //一般開發
   gulp.task('default', gulp.parallel('jade', 'sass', 'babel', gulp.series('vendorJs'), 'browser-sync', 'imagemin', 'watch'));
-  
-//   gulp.task('default', gulp.parallel('jade', 'sass', 'babel', gulp.series('bower','vendorJs'), 'browser-sync', 'imagemin', 'watch'));
