@@ -1,15 +1,2 @@
-"use strict";
-
-var newFn = function newFn() {
-  console.log('Hello');
-};
-
-newFn();
-"use strict";
-
-var newFn2 = function newFn2() {
-  console.log('b');
-};
-
-newFn2();
+"use strict";$(document).ready(function(){$(".showmenu").click(function(e){e.preventDefault(),$("body").toggleClass("menu-show")})});
 //# sourceMappingURL=all.js.map
